@@ -38,13 +38,13 @@ export default function Page() {
           >
             Download for macOS
           </a>
-          <a
+          {/* <a
             href="/downloads/EasyAirScreen.exe"
             className="inline-flex items-center justify-center rounded-md bg-neutral-900 dark:bg-neutral-100 px-6 py-3 text-sm font-medium text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors w-fit"
             download
           >
             Download for Windows
-          </a>
+          </a> */}
         </div>
       </div>
 
