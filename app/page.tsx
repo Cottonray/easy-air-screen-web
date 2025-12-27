@@ -29,6 +29,24 @@ export default function Page() {
       </div>
 
       <div className="my-8">
+        <h2 className="mb-4 text-xl font-semibold tracking-tighter">Download Mobile App</h2>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.somnal.app.easy.air.screen"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block"
+        >
+          <Image
+            src="/images/google-play-badge.png"
+            alt="Get it on Google Play"
+            width={200}
+            height={77}
+            className="hover:opacity-80 transition-opacity"
+          />
+        </a>
+      </div>
+
+      <div className="my-8">
         <h2 className="mb-4 text-xl font-semibold tracking-tighter">Download Desktop App</h2>
         <div className="flex flex-col gap-4">
           <a
