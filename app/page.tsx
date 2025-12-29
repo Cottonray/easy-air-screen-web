@@ -1,35 +1,100 @@
-import Image from 'next/image'
+'use client';
+
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import LanguageSelector from './components/language-selector';
+import en from './locales/en';
+import ko from './locales/ko';
+import ja from './locales/ja';
+import zh from './locales/zh';
+import es from './locales/es';
+import fr from './locales/fr';
+import de from './locales/de';
+import pt from './locales/pt';
+import ru from './locales/ru';
+
+const translations: Record<string, typeof en> = {
+  en,
+  ko,
+  ja,
+  zh,
+  es,
+  fr,
+  de,
+  pt,
+  ru
+};
+
+function getSystemLanguage(): string {
+  if (typeof window === 'undefined') return 'en';
+
+  const browserLang = navigator.language.toLowerCase();
+
+  if (browserLang.startsWith('ko')) return 'ko';
+  if (browserLang.startsWith('ja')) return 'ja';
+  if (browserLang.startsWith('zh')) return 'zh';
+  if (browserLang.startsWith('es')) return 'es';
+  if (browserLang.startsWith('fr')) return 'fr';
+  if (browserLang.startsWith('de')) return 'de';
+  if (browserLang.startsWith('pt')) return 'pt';
+  if (browserLang.startsWith('ru')) return 'ru';
+
+  return 'en';
+}
 
 export default function Page() {
+  const [currentLang, setCurrentLang] = useState('en');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem('language');
+    const lang = savedLang || getSystemLanguage();
+    setCurrentLang(lang);
+    setMounted(true);
+  }, []);
+
+  const handleLanguageChange = (lang: string) => {
+    setCurrentLang(lang);
+    localStorage.setItem('language', lang);
+  };
+
+  if (!mounted) {
+    return null;
+  }
+
+  const t = translations[currentLang];
+
   return (
     <section>
-      <div className="flex items-center gap-4 mb-8">
-        <Image
-          src="/images/logo.png"
-          alt="Easy Air Screen Logo"
-          width={80}
-          height={80}
-          className="rounded-lg"
-        />
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tighter">
-            Easy Air Screen
-          </h1>
-          <p className="text-neutral-600 dark:text-neutral-400">
-            Turn your tablet into a wireless second monitor
-          </p>
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-4">
+          <Image
+            src="/images/logo.png"
+            alt="Easy Air Screen Logo"
+            width={80}
+            height={80}
+            className="rounded-lg"
+          />
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tighter">
+              {t.title}
+            </h1>
+            <p className="text-neutral-600 dark:text-neutral-400">
+              {t.subtitle}
+            </p>
+          </div>
         </div>
+        <LanguageSelector currentLang={currentLang} onLanguageChange={handleLanguageChange} />
       </div>
 
       <div className="my-8">
         <p className="mb-6 text-neutral-700 dark:text-neutral-300">
-          Transform your Android tablet into a high-quality wireless display for Windows and macOS.
-          Expand your workspace and boost productivity—no cables needed.
+          {t.description}
         </p>
       </div>
 
       <div className="my-8">
-        <h2 className="mb-4 text-xl font-semibold tracking-tighter">Download Mobile App</h2>
+        <h2 className="mb-4 text-xl font-semibold tracking-tighter">{t.downloadMobile}</h2>
         <a
           href="https://play.google.com/store/apps/details?id=com.somnal.app.easy.air.screen"
           target="_blank"
@@ -47,40 +112,38 @@ export default function Page() {
       </div>
 
       <div className="my-8">
-        <h2 className="mb-4 text-xl font-semibold tracking-tighter">Download Desktop App</h2>
+        <h2 className="mb-4 text-xl font-semibold tracking-tighter">{t.downloadDesktop}</h2>
         <div className="flex flex-col gap-4">
           <a
             href="/downloads/EasyAirScreen.dmg"
             className="inline-flex items-center justify-center rounded-md bg-neutral-900 dark:bg-neutral-100 px-6 py-3 text-sm font-medium text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors w-fit"
             download
           >
-            Download for macOS
+            {t.downloadMacOS}
           </a>
           {/* <a
             href="/downloads/EasyAirScreen.exe"
             className="inline-flex items-center justify-center rounded-md bg-neutral-900 dark:bg-neutral-100 px-6 py-3 text-sm font-medium text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors w-fit"
             download
           >
-            Download for Windows
+            {t.downloadWindows}
           </a> */}
         </div>
       </div>
 
       <div className="my-8">
-        <h2 className="mb-4 text-xl font-semibold tracking-tighter">Quick Setup</h2>
+        <h2 className="mb-4 text-xl font-semibold tracking-tighter">{t.quickSetup}</h2>
         <ol className="list-decimal list-inside space-y-2 text-neutral-700 dark:text-neutral-300">
-          <li>Install Easy Air Screen on your Android tablet</li>
-          <li>Download and install the desktop app for Windows or macOS</li>
-          <li>Connect both devices to the same Wi-Fi network</li>
-          <li>Launch and connect!</li>
+          {t.setupSteps.map((step, index) => (
+            <li key={index}>{step}</li>
+          ))}
         </ol>
       </div>
 
       <div className="my-8 p-4 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
-        <h3 className="font-semibold mb-2 text-blue-900 dark:text-blue-100">💡 Performance Tip</h3>
+        <h3 className="font-semibold mb-2 text-blue-900 dark:text-blue-100">{t.performanceTip}</h3>
         <p className="text-sm text-blue-800 dark:text-blue-200">
-          For the best experience with minimal lag, use a 5GHz Wi-Fi connection on both devices.
-          If you notice latency, try lowering the resolution in the app settings.
+          {t.performanceDescription}
         </p>
       </div>
     </section>
