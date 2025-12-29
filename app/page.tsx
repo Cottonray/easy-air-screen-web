@@ -115,9 +115,8 @@ export default function Page() {
         <h2 className="mb-4 text-xl font-semibold tracking-tighter">{t.downloadDesktop}</h2>
         <div className="flex flex-col gap-4">
           <a
-            href="/downloads/EasyAirScreen.dmg"
+            href="https://github.com/Cottonray/easy-air-screen-web/releases/latest/download/EasyAirScreen.dmg"
             className="inline-flex items-center justify-center rounded-md bg-neutral-900 dark:bg-neutral-100 px-6 py-3 text-sm font-medium text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors w-fit"
-            download
           >
             {t.downloadMacOS}
           </a>
