@@ -1,4 +1,8 @@
+'use client';
+
 import Link from 'next/link'
+import { useState, useEffect } from 'react';
+import LanguageSelector from './language-selector';
 
 const navItems = {
   '/': {
@@ -9,12 +13,45 @@ const navItems = {
   },
 }
 
+function getSystemLanguage(): string {
+  if (typeof window === 'undefined') return 'en';
+
+  const browserLang = navigator.language.toLowerCase();
+
+  if (browserLang.startsWith('ko')) return 'ko';
+  if (browserLang.startsWith('ja')) return 'ja';
+  if (browserLang.startsWith('zh')) return 'zh';
+  if (browserLang.startsWith('es')) return 'es';
+  if (browserLang.startsWith('fr')) return 'fr';
+  if (browserLang.startsWith('de')) return 'de';
+  if (browserLang.startsWith('pt')) return 'pt';
+  if (browserLang.startsWith('ru')) return 'ru';
+
+  return 'en';
+}
+
 export function Navbar() {
+  const [currentLang, setCurrentLang] = useState('en');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem('language');
+    const lang = savedLang || getSystemLanguage();
+    setCurrentLang(lang);
+    setMounted(true);
+  }, []);
+
+  const handleLanguageChange = (lang: string) => {
+    setCurrentLang(lang);
+    localStorage.setItem('language', lang);
+    window.dispatchEvent(new CustomEvent('languagechange', { detail: lang }));
+  };
+
   return (
     <aside className="-ml-[8px] mb-16 tracking-tight">
       <div className="lg:sticky lg:top-20">
         <nav
-          className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+          className="flex flex-row items-center justify-between relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
           id="nav"
         >
           <div className="flex flex-row space-x-0 pr-10">
@@ -30,6 +67,9 @@ export function Navbar() {
               )
             })}
           </div>
+          {mounted && (
+            <LanguageSelector currentLang={currentLang} onLanguageChange={handleLanguageChange} />
+          )}
         </nav>
       </div>
     </aside>

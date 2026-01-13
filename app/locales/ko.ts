@@ -5,7 +5,6 @@ export default {
   downloadMobile: '모바일 앱 다운로드',
   downloadDesktop: '데스크톱 앱 다운로드',
   downloadMacOS: 'macOS용 다운로드 (Universal)',
-  downloadWindows: 'Windows용 다운로드',
   quickSetup: '빠른 설정',
   setupSteps: [
     '안드로이드 태블릿에 Easy Air Screen 설치',

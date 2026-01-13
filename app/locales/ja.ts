@@ -5,7 +5,6 @@ export default {
   downloadMobile: 'モバイルアプリをダウンロード',
   downloadDesktop: 'デスクトップアプリをダウンロード',
   downloadMacOS: 'macOS用ダウンロード (Universal)',
-  downloadWindows: 'Windows用ダウンロード',
   quickSetup: 'クイックセットアップ',
   setupSteps: [
     'AndroidタブレットにEasy Air Screenをインストール',

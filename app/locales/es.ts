@@ -5,7 +5,6 @@ export default {
   downloadMobile: 'Descargar Aplicación Móvil',
   downloadDesktop: 'Descargar Aplicación de Escritorio',
   downloadMacOS: 'Descargar para macOS (Universal)',
-  downloadWindows: 'Descargar para Windows',
   quickSetup: 'Configuración Rápida',
   setupSteps: [
     'Instala Easy Air Screen en tu tableta Android',

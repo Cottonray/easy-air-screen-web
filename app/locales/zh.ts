@@ -5,7 +5,6 @@ export default {
   downloadMobile: '下载移动应用',
   downloadDesktop: '下载桌面应用',
   downloadMacOS: '下载macOS版 (Universal)',
-  downloadWindows: '下载Windows版',
   quickSetup: '快速设置',
   setupSteps: [
     '在您的Android平板电脑上安装Easy Air Screen',

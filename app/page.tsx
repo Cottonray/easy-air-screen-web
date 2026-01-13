@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import LanguageSelector from './components/language-selector';
 import en from './locales/en';
 import ko from './locales/ko';
 import ja from './locales/ja';
@@ -51,12 +50,16 @@ export default function Page() {
     const lang = savedLang || getSystemLanguage();
     setCurrentLang(lang);
     setMounted(true);
-  }, []);
 
-  const handleLanguageChange = (lang: string) => {
-    setCurrentLang(lang);
-    localStorage.setItem('language', lang);
-  };
+    const handleLanguageChange = (e: CustomEvent<string>) => {
+      setCurrentLang(e.detail);
+    };
+
+    window.addEventListener('languagechange', handleLanguageChange as EventListener);
+    return () => {
+      window.removeEventListener('languagechange', handleLanguageChange as EventListener);
+    };
+  }, []);
 
   if (!mounted) {
     return null;
@@ -66,25 +69,22 @@ export default function Page() {
 
   return (
     <section>
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-4">
-          <Image
-            src="/images/logo.png"
-            alt="Easy Air Screen Logo"
-            width={80}
-            height={80}
-            className="rounded-lg"
-          />
-          <div>
-            <h1 className="text-2xl font-semibold tracking-tighter">
-              {t.title}
-            </h1>
-            <p className="text-neutral-600 dark:text-neutral-400">
-              {t.subtitle}
-            </p>
-          </div>
+      <div className="flex items-center gap-4 mb-8">
+        <Image
+          src="/images/logo.png"
+          alt="Easy Air Screen Logo"
+          width={80}
+          height={80}
+          className="rounded-lg"
+        />
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tighter">
+            {t.title}
+          </h1>
+          <p className="text-neutral-600 dark:text-neutral-400">
+            {t.subtitle}
+          </p>
         </div>
-        <LanguageSelector currentLang={currentLang} onLanguageChange={handleLanguageChange} />
       </div>
 
       <div className="my-8">
