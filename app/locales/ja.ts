@@ -1,7 +1,7 @@
 export default {
   title: 'Easy Air Screen',
   subtitle: 'タブレットをワイヤレスセカンドモニターに変換',
-  description: 'AndroidタブレットをWindowsとmacOS用の高品質ワイヤレスディスプレイに変換します。ワークスペースを拡張し、生産性を向上させます—ケーブルは不要です。',
+  description: 'AndroidタブレットをmacOS用の高品質ワイヤレスディスプレイに変換します。ワークスペースを拡張し、生産性を向上させます—ケーブルは不要です。',
   downloadMobile: 'モバイルアプリをダウンロード',
   downloadDesktop: 'デスクトップアプリをダウンロード',
   downloadMacOS: 'macOS用ダウンロード (Universal)',
@@ -9,7 +9,7 @@ export default {
   quickSetup: 'クイックセットアップ',
   setupSteps: [
     'AndroidタブレットにEasy Air Screenをインストール',
-    'WindowsまたはmacOS用のデスクトップアプリをダウンロードしてインストール',
+    'macOS用のデスクトップアプリをダウンロードしてインストール',
     '両方のデバイスを同じWi-Fiネットワークに接続',
     '起動して接続！'
   ],

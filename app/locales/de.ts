@@ -1,7 +1,7 @@
 export default {
   title: 'Easy Air Screen',
   subtitle: 'Verwandeln Sie Ihr Tablet in einen kabellosen zweiten Monitor',
-  description: 'Verwandeln Sie Ihr Android-Tablet in ein hochwertiges kabelloses Display für Windows und macOS. Erweitern Sie Ihren Arbeitsbereich und steigern Sie die Produktivität—keine Kabel erforderlich.',
+  description: 'Verwandeln Sie Ihr Android-Tablet in ein hochwertiges kabelloses Display für macOS. Erweitern Sie Ihren Arbeitsbereich und steigern Sie die Produktivität—keine Kabel erforderlich.',
   downloadMobile: 'Mobile App Herunterladen',
   downloadDesktop: 'Desktop-App Herunterladen',
   downloadMacOS: 'Für macOS Herunterladen (Universal)',
@@ -9,7 +9,7 @@ export default {
   quickSetup: 'Schnelleinrichtung',
   setupSteps: [
     'Installieren Sie Easy Air Screen auf Ihrem Android-Tablet',
-    'Laden Sie die Desktop-App für Windows oder macOS herunter und installieren Sie sie',
+    'Laden Sie die Desktop-App für macOS herunter und installieren Sie sie',
     'Verbinden Sie beide Geräte mit demselben Wi-Fi-Netzwerk',
     'Starten und verbinden!'
   ],

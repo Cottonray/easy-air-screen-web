@@ -1,7 +1,7 @@
 export default {
   title: 'Easy Air Screen',
   subtitle: '태블릿을 무선 보조 모니터로 전환하세요',
-  description: '안드로이드 태블릿을 Windows와 macOS용 고품질 무선 디스플레이로 변환하세요. 작업 공간을 확장하고 생산성을 향상시키세요—케이블이 필요 없습니다.',
+  description: '안드로이드 태블릿을 macOS용 고품질 무선 디스플레이로 변환하세요. 작업 공간을 확장하고 생산성을 향상시키세요—케이블이 필요 없습니다.',
   downloadMobile: '모바일 앱 다운로드',
   downloadDesktop: '데스크톱 앱 다운로드',
   downloadMacOS: 'macOS용 다운로드 (Universal)',
@@ -9,7 +9,7 @@ export default {
   quickSetup: '빠른 설정',
   setupSteps: [
     '안드로이드 태블릿에 Easy Air Screen 설치',
-    'Windows 또는 macOS용 데스크톱 앱 다운로드 및 설치',
+    'macOS용 데스크톱 앱 다운로드 및 설치',
     '두 기기를 동일한 Wi-Fi 네트워크에 연결',
     '실행 후 연결하세요!'
   ],
